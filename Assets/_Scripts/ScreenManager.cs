@@ -15,14 +15,18 @@ public class ScreenManager : MonoBehaviour
 
     private void Start()
     {
-        OnClickMainMenu();
+        currenetScreen.screenType = ScreenType.MainMenu;
+        startEnable();
     }
+    
     [System.Serializable]
-    public class Screen
+    public struct Screen
     {
         public ScreenType screenType;
         public Canvas canvas;
     }
+
+    Screen currenetScreen;
 
     public void OnClickGamePlayScreen()
     {
@@ -37,11 +41,13 @@ public class ScreenManager : MonoBehaviour
         SetScreen((int)ScreenType.Pause);
     }
 
-    public void OnClickResume()
-    {
-        SetScreen((int)ScreenType.GamePlay);
-    }
+   
     public void OnClickMainMenu()
+    {
+        SetScreen((int)ScreenType.MainMenu);
+        
+    }
+    public void startEnable()
     {
         SetScreen((int)ScreenType.MainMenu);
     }
