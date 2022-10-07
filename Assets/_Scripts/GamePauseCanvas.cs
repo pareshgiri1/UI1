@@ -17,17 +17,19 @@ public class GamePauseCanvas : UIBase
     }
     public void Play()
     {
-        ScreenManager.instance.OpenScreen(ScreenType.Pause);
+        ScreenManager.instance.OpenScreen(ScreenType.GamePlay);
     }
     IEnumerator DelayHide()
     {
-        yield return StartCoroutine(uiAnimatePosition.Animation()); ;
-        //canvas.enabled = false;
+        yield return StartCoroutine(uiAnimatePosition.SlideOut());
+        Play();
+        uiAnimatePosition.rect.position = uiAnimatePosition.startPosition;
+        canvas.enabled = false;
     }
 
     IEnumerator DelayShow()
     {
-        //canvas.enabled = true;
-        yield return StartCoroutine(uiAnimatePosition.AnimationReverse());
+        canvas.enabled = true;
+        yield return StartCoroutine(uiAnimatePosition.SlideIn());
     }
 }

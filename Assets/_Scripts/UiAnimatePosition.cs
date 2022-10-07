@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class UiAnimatePosition : MonoBehaviour
 {
-    
-    float estimate = 1f;
+    float estimate = 0.5f;
     float timer = 0f;
     float ptc = 0f;
     public RectTransform rect;
-    Vector3 startPosition;
-    
+    public Vector3 startPosition;
     public Vector3 targetPosition;
+    private void Awake()
+    {
+        rect.anchoredPosition3D = targetPosition;
+    }
     public void OnClickAnimation()
     {
-        StartCoroutine(Animation());
+        StartCoroutine(SlideOut());
     }
-    public IEnumerator Animation()
+    public IEnumerator SlideOut()
     {
         timer = 0;
-        startPosition = rect.anchoredPosition3D;
-        Debug.Log(startPosition);
+        startPosition = rect.anchoredPosition;
         while (timer < estimate)
         {
             timer += Time.deltaTime;
@@ -28,22 +29,17 @@ public class UiAnimatePosition : MonoBehaviour
             rect.anchoredPosition3D = Vector3.Lerp(startPosition, targetPosition, ptc);
             yield return null;
         }
-        startPosition = rect.anchoredPosition3D;
-        Debug.Log(startPosition);
     }
-
-    public IEnumerator AnimationReverse()
+    public IEnumerator SlideIn()
     {
         timer = 0;
         float estimate = 1f;
         startPosition = rect.anchoredPosition3D;
-        Debug.Log(startPosition);
-        Debug.Log(rect.anchoredPosition3D);
         while (timer < estimate)
         {
             timer += Time.deltaTime;
             ptc = timer / estimate;
-            rect.anchoredPosition3D = Vector3.Lerp(startPosition,new Vector3(0,0,0), ptc);
+            rect.anchoredPosition3D = Vector3.Lerp(startPosition, new Vector3(0, 0, 0), ptc);
             yield return null;
         }
     }

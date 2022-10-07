@@ -2,13 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class UIBase : MonoBehaviour
+public class UIBase : Base
 {
     //Bholeshvar Mahadev
-   // public Canvas canvas;
-
-    public abstract void Hide();
-
-    public abstract void Show();
-    
+    public override void Hide()
+    {
+        StartCoroutine(DelayHide());
+    }
+    public override void Show()
+    {
+        canvas.enabled = true;
+        foreach (var item in uiAnimatePositions)
+        {
+            StartCoroutine(item.SlideIn());
+        }
+    }
+    IEnumerator DelayHide()
+    {
+        foreach (var item in uiAnimatePositions)
+        {
+            StartCoroutine(item.SlideOut());
+        }
+        yield return new WaitForSeconds(0.5f);
+        canvas.enabled = false;
+    }
 }

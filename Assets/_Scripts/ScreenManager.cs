@@ -29,7 +29,8 @@ public class ScreenManager : MonoBehaviour
     public struct Screen
     {
         public ScreenType screenType;
-        public Canvas canvas;
+        //public Canvas canvas;
+        public UIBase uIBase;
     }
 
     Screen currenetScreen;
@@ -40,19 +41,20 @@ public class ScreenManager : MonoBehaviour
     }
     public void OpenScreen(ScreenType screenType)
     {
-        if(currenetScreen.canvas != null)
+        if(currenetScreen.uIBase != null)
         {
-            currenetScreen.canvas.enabled = false;
+            //currenetScreen.canvas.enabled = false;
+            currenetScreen.uIBase.Hide();
         }
         for (int i = 0; i < listOfScreen.Count; i++)
         {
             if (listOfScreen[i].screenType == screenType)
             {
                 //listOfScreen[i].canvas.enabled = true;
-                currenetScreen.canvas = listOfScreen[i].canvas;
+                currenetScreen = listOfScreen[i];
                 break;
             }
         }
-        currenetScreen.canvas.enabled = true;
+        currenetScreen.uIBase.Show();
     }
 }
