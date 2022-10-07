@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScreenManager : MonoBehaviour
-{
-    public List<Screen> listOfScreen;
     public enum ScreenType
     {
         MainMenu,
@@ -12,13 +9,22 @@ public class ScreenManager : MonoBehaviour
         Pause,
         GameOver
     }
+public class ScreenManager : MonoBehaviour
+{
+    #region Singletone
+    public static ScreenManager instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+    #endregion
+    public List<Screen> listOfScreen;
 
     private void Start()
     {
-        currenetScreen.screenType = ScreenType.MainMenu;
-        startEnable();
+        StartEnable();
     }
-    
+
     [System.Serializable]
     public struct Screen
     {
@@ -28,41 +34,25 @@ public class ScreenManager : MonoBehaviour
 
     Screen currenetScreen;
 
-    public void OnClickGamePlayScreen()
+    public void StartEnable()
     {
-        SetScreen((int)ScreenType.GamePlay);
+        OpenScreen(ScreenType.MainMenu);
     }
-    public void GameOver()
+    public void OpenScreen(ScreenType screenType)
     {
-        SetScreen((int)ScreenType.GameOver);
-    }
-    public void OnClickPause()
-    {
-        SetScreen((int)ScreenType.Pause);
-    }
-
-   
-    public void OnClickMainMenu()
-    {
-        SetScreen((int)ScreenType.MainMenu);
-        
-    }
-    public void startEnable()
-    {
-        SetScreen((int)ScreenType.MainMenu);
-    }
-    public void SetScreen(int index)
-    {
+        if(currenetScreen.canvas != null)
+        {
+            currenetScreen.canvas.enabled = false;
+        }
         for (int i = 0; i < listOfScreen.Count; i++)
         {
-            if ((int)listOfScreen[i].screenType == index)
+            if (listOfScreen[i].screenType == screenType)
             {
-                listOfScreen[i].canvas.enabled = true;
-            }
-            else
-            {
-                listOfScreen[i].canvas.enabled = false;
+                //listOfScreen[i].canvas.enabled = true;
+                currenetScreen.canvas = listOfScreen[i].canvas;
+                break;
             }
         }
+        currenetScreen.canvas.enabled = true;
     }
 }
