@@ -1664,7 +1664,7 @@ MonoBehaviour:
   showTime: 0.5
   hideTime: 0.5
   timer: 0
-  startPosition: {x: 30, y: -50, z: 0}
+  startPosition: {x: 0, y: 0, z: 0}
   targetPosition: {x: -1080, y: 0, z: 0}
 --- !u!114 &1180262852
 MonoBehaviour:
@@ -2975,7 +2975,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1858016348}
   uiAnimatePositions: []
-  uiAnimatePosition: {fileID: 0}
 --- !u!1 &1864864014
 GameObject:
   m_ObjectHideFlags: 0
