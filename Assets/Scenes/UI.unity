@@ -1331,7 +1331,6 @@ GameObject:
   - component: {fileID: 898894602}
   - component: {fileID: 898894601}
   - component: {fileID: 898894600}
-  - component: {fileID: 898894603}
   m_Layer: 0
   m_Name: PlayButton
   m_TagString: Untagged
@@ -1437,7 +1436,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1454,23 +1453,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898894598}
   m_CullTransparentMesh: 1
---- !u!114 &898894603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898894598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43ec84358384481b857c44853263c17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showTime: 0.5
-  hideTime: 0.5
-  timer: 0
-  startPosition: {x: 0, y: 50, z: 0}
-  targetPosition: {x: 0, y: -1920, z: 0}
 --- !u!1 &1027823456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,7 +1602,6 @@ GameObject:
   - component: {fileID: 1180262854}
   - component: {fileID: 1180262853}
   - component: {fileID: 1180262852}
-  - component: {fileID: 1180262851}
   m_Layer: 0
   m_Name: PlayButton (1)
   m_TagString: Untagged
@@ -1649,23 +1630,6 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: -50}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1180262851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180262849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43ec84358384481b857c44853263c17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showTime: 0.5
-  hideTime: 0.5
-  timer: 0
-  startPosition: {x: 0, y: 0, z: 0}
-  targetPosition: {x: -1080, y: 0, z: 0}
 --- !u!114 &1180262852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3257,6 +3221,8 @@ GameObject:
   - component: {fileID: 1969295087}
   - component: {fileID: 1969295086}
   - component: {fileID: 1969295089}
+  - component: {fileID: 1969295090}
+  - component: {fileID: 1969295091}
   m_Layer: 0
   m_Name: MainMenu Canvas
   m_TagString: Untagged
@@ -3360,8 +3326,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1969295088}
   uiAnimatePositions:
-  - {fileID: 898894603}
-  - {fileID: 1180262851}
+  - {fileID: 1969295091}
+--- !u!225 &1969295090
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969295084}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1969295091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969295084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b36eec5259c47b882eaabc8e27b025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showTime: 0.5
+  hideTime: 0.5
+  timer: 0
+  canvasGroup: {fileID: 1969295090}
 --- !u!1 &2004689591
 GameObject:
   m_ObjectHideFlags: 0

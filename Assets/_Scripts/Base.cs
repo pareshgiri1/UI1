@@ -7,7 +7,7 @@ public abstract class Base : MonoBehaviour
 
     public Canvas canvas;
 
-    public List<UiAnimatePosition> uiAnimatePositions;
+    public List<AnimationBase> uiAnimatePositions;
 
     public abstract void Hide();
 

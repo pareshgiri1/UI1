@@ -25,4 +25,6 @@ public class UIBase : Base
         yield return new WaitForSeconds(0.5f);
         canvas.enabled = false;
     }
+
+
 }
