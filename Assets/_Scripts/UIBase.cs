@@ -14,14 +14,14 @@ public class UIBase : Base
         canvas.enabled = true;
         foreach (var item in uiAnimatePositions)
         {
-            StartCoroutine(item.SlideIn());
+            item.ShowAnimation();
         }
     }
     IEnumerator DelayHide()
     {
         foreach (var item in uiAnimatePositions)
         {
-            StartCoroutine(item.SlideOut());
+            item.HideAnimation();
         }
         yield return new WaitForSeconds(0.5f);
         canvas.enabled = false;

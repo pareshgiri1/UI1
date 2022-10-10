@@ -50,7 +50,6 @@ public class ScreenManager : MonoBehaviour
         {
             if (listOfScreen[i].screenType == screenType)
             {
-                //listOfScreen[i].canvas.enabled = true;
                 currenetScreen = listOfScreen[i];
                 break;
             }

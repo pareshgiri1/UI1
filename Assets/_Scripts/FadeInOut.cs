@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePauseCanvas : UIBase
+public class FadeInOut : MonoBehaviour
 {
     //Bholeshvar Mahadev
-    public void Play()
-    {
-           }
 }
