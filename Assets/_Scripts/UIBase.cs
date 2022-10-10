@@ -3,10 +3,19 @@ using UnityEngine;
 
 public class UIBase : Base
 {
+    public override void Back()
+    {
+
+    }
+
     //Bholeshvar Mahadev
     public override void Hide()
     {
         StartCoroutine(DelayHide());
+        if (PopUpManager.instance.currenetPopUp.uIBase != null)
+        {
+            PopUpManager.instance.currenetPopUp.uIBase = null;
+        }
     }
     public override void Show()
     {

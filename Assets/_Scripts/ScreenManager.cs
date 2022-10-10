@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-    public enum ScreenType
-    {
-        MainMenu,
-        GamePlay,
-        Pause,
-        GameOver
-    }
+public enum ScreenType
+{
+    MainMenu,
+    GamePlay,
+    GameOver
+}
 public class ScreenManager : MonoBehaviour
 {
     #region Singletone
@@ -34,13 +33,28 @@ public class ScreenManager : MonoBehaviour
 
     Screen currenetScreen;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (PopUpManager.instance.currenetPopUp.uIBase == null)
+            {
+                currenetScreen.uIBase.Back();
+            }
+            else
+            {
+                PopUpManager.instance.currenetPopUp.uIBase.Back();
+                
+            }
+        }
+    }
     public void StartEnable()
     {
         OpenScreen(ScreenType.MainMenu);
     }
     public void OpenScreen(ScreenType screenType)
     {
-        if(currenetScreen.uIBase != null)
+        if (currenetScreen.uIBase != null)
         {
             //currenetScreen.canvas.enabled = false;
             currenetScreen.uIBase.Hide();

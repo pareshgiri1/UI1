@@ -1,13 +1,15 @@
 
 public class GameOverCanvas : UIBase
 {
-    //Bholeshvar Mahadev
-    //public UiAnimatePosition uiAnimatePosition;
     
     public void MainMenu()
     {
         ScreenManager.instance.OpenScreen(ScreenType.MainMenu);
     }
-    
+    public override void Back()
+    {
+        base.Back();
+        MainMenu();
+    }
 }
 

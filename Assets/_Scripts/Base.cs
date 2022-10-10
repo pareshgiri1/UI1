@@ -12,4 +12,6 @@ public abstract class Base : MonoBehaviour
     public abstract void Hide();
 
     public abstract void Show();
+
+    public abstract void Back();
 }

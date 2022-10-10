@@ -16,13 +16,13 @@ public class FadeInOut : AnimationBase
         StartCoroutine(FadeIn());
     }
 
-  IEnumerator FadeIn()
+    IEnumerator FadeIn()
     {
         timer = 0;
         while (timer < showTime)
         {
             timer += Time.deltaTime;
-            canvasGroup.alpha = Mathf.Lerp(0,1,timer/showTime);
+            canvasGroup.alpha = Mathf.Lerp(0, 1, timer / showTime);
             yield return null;
         }
     }
