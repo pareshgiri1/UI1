@@ -22,19 +22,6 @@ public class UiAnimatePosition : AnimationBase
     float yMult ;
     public void SetTransition(Transition transition,Direction animation)
     {
-        //switch (transition)
-        //{
-        //    case Transition.Forward:
-        //        xMult = 1f;
-        //        yMult = 1f;
-        //        break;
-
-        //    case Transition.Reverse  :
-                
-        //        xMult = 1f;
-        //        yMult = -1;
-        //        break;
-        //}
         
         if( (Direction.Left == animation || Direction.Right == animation ) && Transition.Reverse == transition)
         {
