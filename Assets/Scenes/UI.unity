@@ -1650,7 +1650,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   direction: 0
-  transition: 0
+  transition: 1
   layer: 0
 --- !u!1 &663622231
 GameObject:
