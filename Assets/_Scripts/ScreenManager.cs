@@ -1,12 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ScreenType
-{
-    MainMenu,
-    GamePlay,
-    GameOver
-}
+
 public class ScreenManager : MonoBehaviour
 {
     #region Singletone
@@ -69,4 +64,26 @@ public class ScreenManager : MonoBehaviour
         }
         currenetScreen.uIBase.Show();
     }
+}
+
+
+public enum ScreenType
+{
+    MainMenu,
+    GamePlay,
+    GameOver
+}
+
+public enum Direction
+{
+    Left,
+    Right,
+    Up,
+    Down
+}
+
+public enum Transition
+{
+    Forward,
+    Reverse
 }

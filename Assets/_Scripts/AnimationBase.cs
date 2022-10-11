@@ -9,3 +9,4 @@ public abstract class AnimationBase : MonoBehaviour
     public abstract void ShowAnimation();
     public abstract void HideAnimation();
 }
+
