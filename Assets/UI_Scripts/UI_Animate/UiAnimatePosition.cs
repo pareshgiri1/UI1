@@ -15,44 +15,29 @@ public class UiAnimatePosition : AnimationBase
         rect = GetComponent<RectTransform>();
         startPosition = rect.localPosition;
         SettargetPosition(direction);
-        SetTransition(transition,direction);
-        rect.localPosition = targetPosition;//new Vector3(targetPosition.x,startPosition.y,startPosition.z);
+        rect.localPosition = targetPosition;
     }
-    float xMult ;
-    float yMult ;
-    public void SetTransition(Transition transition,Direction animation)
-    {
-        
-        if( (Direction.Left == animation || Direction.Right == animation ) && Transition.Reverse == transition)
-        {
-            xMult = -1f;
-            yMult = 1f;
-        }
-        else if ((Direction.Up == animation || Direction.Down == animation) && Transition.Reverse == transition)
-        {
-            xMult = 1f;
-            yMult = -1f;
-        }
-        else
-        {
-            xMult = yMult =1f;
-        }
-
-    }
+    float xMult = 1;
+    float yMult = 1;
     public void SettargetPosition(Direction animation)
     {
         switch (animation)
         {
             case Direction.Left:
+                
+                xMult = Transition.Reverse == transition ? -1f : 1;
                 targetPosition = new Vector3(Screen.width * 2, startPosition.y, startPosition.z);
                 break;
             case Direction.Right:
+                xMult = Transition.Reverse == transition ? -1f : 1;
                 targetPosition = new Vector3(-Screen.width * 2, startPosition.y, startPosition.z);
                 break;
             case Direction.Up:
+                yMult = Transition.Reverse == transition ? -1f : 1;
                 targetPosition = new Vector3(startPosition.x, -Screen.height * 2, startPosition.z);
                 break;
             case Direction.Down:
+                yMult = Transition.Reverse == transition ? -1f : 1;
                 targetPosition = new Vector3(startPosition.x, Screen.height * 2, startPosition.z);
                 break;
 
@@ -60,24 +45,24 @@ public class UiAnimatePosition : AnimationBase
     }
     IEnumerator SlideOut()
     {
-        targetPosition = new Vector3(targetPosition.x * xMult, targetPosition.y * yMult, targetPosition.z * yMult);
+        targetPosition = new Vector3(targetPosition.x * xMult, targetPosition.y * yMult, targetPosition.z);
         timer = 0;
         while (timer < hideTime)
         {
             timer += Time.deltaTime;
-            rect.localPosition = Vector3.Lerp(startPosition, targetPosition, timer / hideTime);
+            rect.localPosition = Vector3.Lerp(startPosition, targetPosition, animationCurve.Evaluate(timer / hideTime));
             yield return null;
         }
     }
     IEnumerator SlideIn()
     {
-        targetPosition = new Vector3(targetPosition.x * xMult, targetPosition.y * yMult, targetPosition.z * yMult);
+        targetPosition = new Vector3(targetPosition.x * xMult, targetPosition.y * yMult, targetPosition.z);
         yield return new WaitForSeconds(layer * showTime / 2);
         timer = 0;
         while (timer < showTime)
         {
             timer += Time.deltaTime;
-            rect.localPosition = Vector3.Lerp(targetPosition, startPosition, timer / showTime);
+            rect.localPosition = Vector3.Lerp(targetPosition, startPosition, animationCurve.Evaluate(timer / showTime));
             yield return null;
         }
     }

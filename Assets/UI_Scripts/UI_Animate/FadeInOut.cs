@@ -22,7 +22,7 @@ public class FadeInOut : AnimationBase
         while (timer < showTime)
         {
             timer += Time.deltaTime;
-            canvasGroup.alpha = Mathf.Lerp(0, 1, timer / showTime);
+            canvasGroup.alpha = Mathf.Lerp(0, 1,animationCurve.Evaluate( timer / showTime));
             yield return null;
         }
     }
@@ -33,7 +33,7 @@ public class FadeInOut : AnimationBase
         while (timer < hideTime)
         {
             timer += Time.deltaTime;
-            canvasGroup.alpha = Mathf.Lerp(1, 0, timer / hideTime);
+            canvasGroup.alpha = Mathf.Lerp(1, 0, animationCurve.Evaluate(timer / hideTime));
             yield return null;
         }
     }

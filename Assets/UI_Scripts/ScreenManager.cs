@@ -64,6 +64,10 @@ public class ScreenManager : MonoBehaviour
         }
         currenetScreen.uIBase.Show();
     }
+    public Screen GetCurrentScreen()
+    {
+        return currenetScreen;
+    }
 }
 
 
