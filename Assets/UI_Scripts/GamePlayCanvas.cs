@@ -1,4 +1,6 @@
-
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 public class GamePlayCanvas : UIBase
 {
     
@@ -14,6 +16,11 @@ public class GamePlayCanvas : UIBase
     {
         base.Back();
         Pause();
+    }
+
+    private void Update()
+    {
+        Debug.Log(transform.localScale);
     }
 }
 
